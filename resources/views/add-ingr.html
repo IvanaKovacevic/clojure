@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script type="text/javascript" src="/js/ingr.js"></script>
+    <title>New ingredient</title>
+    <style>
+body, html {
+          height: 100%;
+          margin: 0;
+      }
+
+      .bg {
+          background-image: url("img/main-cover.jpg");
+          overflow: hidden;
+          margin: 0 0;
+          padding-top: 0px;
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>Welcome to food buddy!</h1>
+    <p><b>We are your ultimate tool for food and drinks recipes.</b></p>
+</div>
+<ul class="sidenav">
+    <li><a href="/home">Recipes</a></li>
+    <li><a class="active" href="/add_ingr">Add ingredient</a></li>
+    <li><a href="/recipe">New recipe</a></li>
+    <li><a href="/coctails">Coctails</a></li>
+    <li><a style="float:right" href="/profile">Profile</a></li>
+    <li><a style="float:right" href="/logout">Logout</a></li>
+</ul>
+<div class="bg">
+    <div>
+        <div class="mainIngr">
+            <form name="ingredient" class="form1" method="post" action="/add_ingr">
+                <label class="lbl col-md-4 control-label">Add ingredient:</label>
+                <input class="un" type="text" name="ingredient" align="center" id="ingredient" class="form-control"
+                       placeholder="Ingredient name" required>
+                <button type="submit" class="submit" style="margin-bottom: 40px;">Save ingredient!</button>
+            </form>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for ingredients.."
+                   title="Type in an ingredient">
+            <table id="myTable">
+                <tr class="header">
+                    <th style="width:60%;" id="id">ID</th>
+                    <th style="width:40%;" id="name">Name</th>
+                </tr>
+                <tbody>
+                {% for i in ingr %}
+                <tr id="{{i.id}}" class="clickable-row">
+                    <td>{{i.id}}</td>
+                    <td>{{i.name}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

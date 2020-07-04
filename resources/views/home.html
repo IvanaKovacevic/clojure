@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <title>Welcome to food buddy!</title>
+    <style>
+body, html {
+          height: 100%;
+          margin: 0;
+      }
+
+      .bg {
+          background-image: url("img/main-cover.jpg");
+          overflow: hidden;
+          margin: 0 0;
+          padding-top: 0px;
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>Welcome to food buddy!</h1>
+    <p><b>We are your ultimate tool for food and drinks recipes.</b></p>
+</div>
+<ul class="sidenav">
+    <li><a class="active" href="/home">Recipes</a></li>
+    <li><a href="/add_ingr">Add ingredient</a></li>
+    <li><a href="/recipe">New recipe</a></li>
+    <li><a href="/coctails">Coctails</a></li>
+    <li><a style="float:right" href="/profile">Profile</a></li>
+    <li><a style="float:right" href="/logout">Logout</a></li>
+</ul>
+<div class="bg">
+    <div class="mainHome">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for recipes.."
+               title="Type in something" style="margin-top: 10px;">
+        <table id="myTable">
+            <tr class="header">
+                <th style="width:15%;">ID</th>
+                <th style="width:60%;">Name</th>
+                <th style="width:35%;">Recipe type</th>
+            </tr>
+            <tbody>
+            {% for r in recipes %}
+            <tr id="{{r.id}}" onclick="getRecipe(this.id)" class="clickable-row">
+                <td>{{r.id}}</td>
+                <td>{{r.name}}</td>
+                <td>{{r.type}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+function getRecipe(id) {
+    window.location = "/viewRecipe/" + id;
+}
+</script>
+</body>
+</html>

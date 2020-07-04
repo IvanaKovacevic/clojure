@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <title>Welcome to food buddy!</title>
+    <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+
+    .bg {
+      background-image: url("img/main-cover.jpg");
+      overflow: hidden;
+      margin: 0 0;
+      padding-top: 0px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .header h1 {
+      font-size: 40px;
+    }
+    .header{
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
+    ul.sidenav {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 25%;
+      background-color: #ead8ed;
+      position: fixed;
+      height: 100%;
+      overflow: auto;
+    }
+
+    ul.sidenav li a {
+      display: block;
+      color: #000;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+
+    ul.sidenav li a.active {
+      background-color: #9C27B0;
+      color: white;
+    }
+
+    ul.sidenav li a:hover:not(.active) {
+      background-color: #e2a4ed;
+      color: white;
+    }
+    div.content {
+      margin-left: 25%;
+      padding: 1px 16px;
+      height: 1000px;
+    }
+
+    @media screen{
+      ul.sidenav {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      ul.sidenav li a {
+        float: left;
+        padding: 15px;
+      }
+
+      div.content {margin-left: 0;}
+    }
+
+    @media screen and (max-width: 400px) {
+      ul.sidenav li a {
+        text-align: center;
+        float: none;
+      }
+    }
+
+    .header h1 {
+      font-size: 40px;
+    }
+
+    li:last-child {
+      border-right: none;
+    }
+  }
+  .mainRecipe {
+   background-color: #FFFFFF;
+   width: 600px;
+   margin: 5em auto;
+   border-radius: 1.5em;
+   box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+ }
+
+ body {
+  background-color: #F3EBF6;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+ .lbl {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+  color: #8C55AA;
+}
+
+.un:focus, .pass:focus {
+  border: 2px solid rgba(0, 0, 0, 0.18) !important;
+}
+
+.un {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>Create your own recipe!</h1>
+    <p><b>Start creating your own recipe book today!</b></p>
+</div>
+<ul class="sidenav">
+    <li><a href="/home">Recipes</a></li>
+    <li><a href="/add_ingr">Add ingredient</a></li>
+    <li><a href="/recipe">New recipe</a></li>
+    <li><a href="/coctails">Coctails</a></li>
+    <li><a style="float:right" href="/profile">Profile</a></li>
+    <li><a style="float:right" href="/logout">Logout</a></li>
+</ul>
+<div class="bg">
+    <div class="mainRecipe" style="background-image: url('https://www.foodphotographyandstyling.se/wp-content/uploads/2016/02/eat-clean%C2%A9Bianca_Brandon-Cox.jpg');background-repeat:no-repeat;background-size: cover;">
+        <label class="lbl col-md-4 control-label">Name:</label>
+        <div class="col-md-8">
+            <input class="un" class="form-control" id="name" align="center" name="name" value="{{name}}"
+                   type="text"
+                   readonly style="background-color: #F3EBF6;">
+        </div>
+        <label class="lbl col-md-4 control-label">Ingredients:</label>
+        <div class="col-md-8" class="un" class="form-control">
+            {% for i in ingr %}
+            <div class="col-md-8" style="margin-left:60px;">
+                <p>{{i.iname}}   {{i.amount}}{{i.aname}}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <label class="lbl col-md-4 control-label">Description:</label>
+        <p>
+            <textarea type="text" class="un" name="description" align="left" style="margin-left:60px;height:400px;background-color: #F3EBF6;align:left;" readonly>{{description}}</textarea>
+        </p>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <title>Welcome to food buddy!</title>
+    <style>
+body, html {
+          height: 100%;
+          margin: 0;
+          background-color: #cef3ce;
+      }
+
+      .bg {
+          overflow: hidden;
+          margin: 0 0;
+          padding-top: 0px;
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+#wrapper {
+    width: 500px;
+    overflow: hidden; /* add this to contain floated children */
+}
+#first {
+    width: 300px;
+    float:left; /* add this */
+}
+#second {
+    float: left; /* add this */
+}
+
+
+    </style>
+</head>
+<body>
+<ul class="sidenav">
+    <li><a href="/home">Recipes</a></li>
+    <li><a href="/add_ingr">Add ingredient</a></li>
+    <li><a href="/recipe">New recipe</a></li>
+    <li><a class="active" href="/coctails">Coctails</a></li>
+    <li><a style="float:right" href="/profile">Profile</a></li>
+    <li><a style="float:right" href="/logout">Logout</a></li>
+</ul>
+<div class="bg">
+    <div class="w3-row w3-padding-64" id="about">
+        <div class="w3-col m6 w3-padding-large w3-hide-small">
+            <img src={{photo}} class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600"
+                 height="750">
+        </div>
+        <div class="w3-col m6 w3-padding-large">
+            <h1 class="w3-center" style="font-size:20px;">Your random coctail for today is </h1><br>
+            <h5 class="w3-center" style="font-size:40px;font-weight:bold;">{{name}}</h5>
+            <h5 class="w3-center">Ingredients:</h5>
+            <div id="wrapper">
+                <div id="first">
+                    {% for i in ingredients %}
+                    <p class="w3-large">{{i}}</p>
+                    {% endfor %}
+                </div>
+                <div id="second">
+                    {% for i in measure %}
+                    <p class="w3-large">{{i}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <p class="w3-large w3-text-grey w3-hide-medium">{{instructions}}</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

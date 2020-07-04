@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <title>Profile</title>
+    <style>
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  background-image: url("img/main-cover.jpg");
+  height: 100%;
+  overflow: auto;
+  background-position: center;
+  margin: 0 0;
+  padding-top: 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>Welcome to food buddy!</h1>
+    <p><b>We are your ultimate tool for food and drinks recipes.</b></p>
+</div>
+<ul class="sidenav">
+    <li><a href="/home">Recipes</a></li>
+    <li><a href="/add_ingr">Add ingredient</a></li>
+    <li><a href="/recipe">New recipe</a></li>
+    <li><a href="/coctails">Coctails</a></li>
+    <li><a  class="active" style="float:right" href="/profile">Profile</a></li>
+    <li><a style="float:right" href="/logout">Logout</a></li>
+</ul>
+<div class="bg">
+    <div>
+    <div class="mainProfile">
+        <p class="sign" align="center">Personal information</p>
+        <form class="form1" method="post" action="/profile">
+            <label class="lbl col-md-4 control-label">Username:</label>
+            <div class="col-md-8">
+                <input class="un" class="form-control" id="username" align="center" name="username" value="{{username}}"
+                       type="text"
+                       readonly>
+            </div>
+            <label class="lbl col-lg-4 control-label">Password:</label>
+            <div class="col-lg-8">
+                <input class="pass" class="form-control" id="password" align="center" name="password"
+                       value="{{password}}"
+                       type="password">
+            </div>
+            <label class="lbl col-lg-4 control-label">Name:</label>
+            <div class="col-lg-8">
+                <input class="un" class="form-control" id="name" align="center" name="name" value="{{name}}"
+                       type="text">
+            </div>
+            <label class="lbl col-lg-4 control-label">Surname:</label>
+            <div class="col-lg-8">
+                <input class="un" class="form-control" id="surname" align="center" name="surname" value="{{surname}}"
+                       type="text">
+            </div>
+            <button type="submit" class="submit"><a align="center">Submit</a></button>
+        </form>
+    </div>
+    </div>
+</div>
+</body>
+</html>
